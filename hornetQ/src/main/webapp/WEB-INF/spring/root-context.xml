@@ -13,23 +13,6 @@
 		jndi-name="/ConnectionFactory" cache="true"
 		resource-ref="true" lookup-on-startup="false"
 		proxy-interface="javax.jms.ConnectionFactory" >
-		<jee:environment>
-      		java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory
-			java.naming.provider.url=jnp://localhost:1099
-			expected-type="org.hornetq.core.remoting.impl.netty.NettyConnectionFactory"
-			java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces
-    	</jee:environment>
-	</jee:jndi-lookup>
-	
-
-	<jee:jndi-lookup id="fooQueue" jndi-name="/queue/AUALoggerQueue"
-		cache="true" resource-ref="true" lookup-on-startup="false"
-		proxy-interface="javax.jms.Queue" >
-		<jee:environment>
-      		java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory
-			java.naming.provider.url=jnp://localhost:1099
-			java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces
-    	</jee:environment>
 	</jee:jndi-lookup>
 	
 	<bean id="cachedConnectionFactory"
@@ -39,10 +22,8 @@
 	<jms:listener-container connection-factory="connectionFactory"
 	    					container-type="default"
 	    					acknowledge="auto"
-	    					destination-type="queue">
-	    
-	    <jms:listener destination="AUALoggerQueue" ref="messageListener"/>
-	    
+	    					destination-type="queue" >	    
+	    <jms:listener destination="AUALoggerQueue" ref="messageListener"/>	    
 	</jms:listener-container>
 	
 	<bean id="messageListener" class="com.nzannino.hornetq.jms.HornetListener" />
