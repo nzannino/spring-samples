@@ -8,7 +8,6 @@ public class HornetListener implements MessageListener{
 
 	@Override
 	public void onMessage(Message message) {
-		// TODO Auto-generated method stub
 		if (message instanceof TextMessage) {
 		      try {
 		        System.out.println("Received message: "+((TextMessage) message).getText());

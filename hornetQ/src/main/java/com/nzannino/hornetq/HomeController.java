@@ -31,6 +31,14 @@ public class HomeController {
 	@Autowired
 	private JmsTemplate jmsTemplate;
 	
+	public JmsTemplate getJmsTemplate() {
+		return jmsTemplate;
+	}
+
+	public void setJmsTemplate(JmsTemplate jmsTemplate) {
+		this.jmsTemplate = jmsTemplate;
+	}
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
